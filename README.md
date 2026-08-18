@@ -14,7 +14,7 @@ Instalador XMASTER para Ubuntu 22.04 LTS.
 Ejecutar como usuario root:
 
     cd /root
-    wget -O install.py3 https://raw.githubusercontent.com/xtreamdark/DARKSITE/main/install/install.py3
+    wget -O install.py3 https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install.py3
     chmod +x install.py3
     python3.10 install.py3
 
@@ -50,7 +50,7 @@ Usuario del sistema:
 
 Repositorio mantenido en GitHub bajo:
 
-    xtreamdark/DARKSITE
+    xtreamdark/xtream-master
 
 Incluye correcciones de instalación, runtime y compatibilidad para Ubuntu 22.04 LTS.
 
