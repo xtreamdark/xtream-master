@@ -465,6 +465,42 @@ def start(rType):
 
     os.system("%s/start_services.sh" % base)
 
+    # XMASTER LB heartbeat administrado por systemd.
+    if rType == "LB":
+        heartbeat_service = """[Unit]
+Description=XMASTER Load Balancer Heartbeat
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=xtreamcodes
+Group=xtreamcodes
+ExecStart=/home/xtreamcodes/iptv_xtream_codes/php/bin/php /home/xtreamcodes/iptv_xtream_codes/tools/xmaster_heartbeat.php
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+"""
+        try:
+            service_path = "/etc/systemd/system/xmaster-heartbeat.service"
+            with open(service_path, "w") as f:
+                f.write(heartbeat_service)
+
+            os.system("chown xtreamcodes:xtreamcodes %s/tools/xmaster_heartbeat.php" % base)
+            os.system("chmod 755 %s/tools/xmaster_heartbeat.php" % base)
+
+            os.system("systemctl daemon-reload")
+            os.system("systemctl enable xmaster-heartbeat.service >/dev/null 2>&1")
+            os.system("systemctl restart xmaster-heartbeat.service")
+
+            printc("XMASTER LB HEARTBEAT SERVICE ENABLED", col.OKGREEN, 2)
+        except Exception as e:
+            print("ERROR configuring XMASTER heartbeat service: %s" % e)
+
+
+
 
 def modifyNginx():
 
