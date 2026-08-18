@@ -461,22 +461,80 @@ def start(rType):
     os.system("%s/start_services.sh" % base)
 
 
-    # XMASTER: usar FFmpeg/FFprobe moderno en Load Balancers.
+    # XMASTER: FFmpeg moderno + wrapper compatible con argumentos Xtream.
     if rType == "LB":
-        printc("INSTALLING MODERN FFMPEG FOR LOAD BALANCER", col.OKGREEN, 2)
+        printc("INSTALLING XMASTER FFMPEG COMPATIBILITY WRAPPER", col.OKGREEN, 2)
 
+        # Instalar FFmpeg/FFprobe moderno del sistema.
         os.system("apt-get update >/dev/null 2>&1")
-        os.system("DEBIAN_FRONTEND=noninteractive apt-get install --reinstall -y ffmpeg >/dev/null 2>&1")
-
         os.system(
-            "cp -af /usr/bin/ffmpeg "
-            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg"
+            "DEBIAN_FRONTEND=noninteractive "
+            "apt-get install --reinstall -y ffmpeg >/dev/null 2>&1"
         )
 
+        # Guardar el FFmpeg Xtream antiguo solo como respaldo.
+        os.system(
+            "if [ -f /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg ] && "
+            "[ ! -f /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg.xtream-old ]; then "
+            "cp -a /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg.xtream-old; fi"
+        )
+
+        # FFprobe moderno directamente dentro de Xtream.
         os.system(
             "cp -af /usr/bin/ffprobe "
             "/home/xtreamcodes/iptv_xtream_codes/bin/ffprobe"
         )
+
+        # Wrapper: Xtream llama bin/ffmpeg, pero realmente ejecutamos
+        # /usr/bin/ffmpeg moderno limpiando argumentos incompatibles.
+        ffmpeg_wrapper = r"""#!/bin/bash
+
+REAL_FFMPEG="/usr/bin/ffmpeg"
+ARGS=()
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+
+        -nofix_dts)
+            # Opcion antigua Xtream no compatible.
+            shift
+            ;;
+
+        -segment_list_flags)
+            if [ "$#" -ge 2 ]; then
+                VALUE="$2"
+
+                # Xtream puede enviar +live+delete.
+                # FFmpeg moderno conserva live y elimina delete.
+                VALUE="${VALUE//+delete/}"
+                VALUE="${VALUE//delete+/}"
+                VALUE="${VALUE//delete/}"
+
+                if [ -n "$VALUE" ]; then
+                    ARGS+=("-segment_list_flags" "$VALUE")
+                fi
+
+                shift 2
+            else
+                shift
+            fi
+            ;;
+
+        *)
+            ARGS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+exec "$REAL_FFMPEG" "${ARGS[@]}"
+"""
+
+        with open(
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg", "w"
+        ) as f:
+            f.write(ffmpeg_wrapper)
 
         os.system(
             "chown xtreamcodes:xtreamcodes "
@@ -490,7 +548,8 @@ def start(rType):
             "/home/xtreamcodes/iptv_xtream_codes/bin/ffprobe"
         )
 
-        printc("MODERN FFMPEG / FFPROBE ENABLED", col.OKGREEN, 2)
+        printc("XMASTER MODERN FFMPEG WRAPPER ENABLED", col.OKGREEN, 2)
+
 
     # XMASTER LB heartbeat administrado por systemd.
     if rType == "LB":
