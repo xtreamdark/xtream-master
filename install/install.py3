@@ -262,13 +262,8 @@ def configure():
         os.system("chmod +x /etc/init.d/xtreamcodes")
         os.system("update-rc.d xtreamcodes defaults >/dev/null 2>&1")
         os.system("update-rc.d xtreamcodes enable >/dev/null 2>&1")
-    try:
-        os.remove("/usr/bin/ffmpeg")
-    except:
-        pass
     if not os.path.exists("/home/xtreamcodes/iptv_xtream_codes/tv_archive"): os.mkdir(
         "/home/xtreamcodes/iptv_xtream_codes/tv_archive/")
-    os.system("ln -s /home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg /usr/bin/")
     os.system("chown xtreamcodes:xtreamcodes -R /home/xtreamcodes > /dev/null")
     os.system("chmod -R 0777 /home/xtreamcodes > /dev/null")
     os.system("chmod +x /home/xtreamcodes/iptv_xtream_codes/start_services.sh > /dev/null")
@@ -464,6 +459,38 @@ def start(rType):
     printc("RUNTIME PATHS AND BINARIES OK")
 
     os.system("%s/start_services.sh" % base)
+
+
+    # XMASTER: usar FFmpeg/FFprobe moderno en Load Balancers.
+    if rType == "LB":
+        printc("INSTALLING MODERN FFMPEG FOR LOAD BALANCER", col.OKGREEN, 2)
+
+        os.system("apt-get update >/dev/null 2>&1")
+        os.system("DEBIAN_FRONTEND=noninteractive apt-get install --reinstall -y ffmpeg >/dev/null 2>&1")
+
+        os.system(
+            "cp -af /usr/bin/ffmpeg "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg"
+        )
+
+        os.system(
+            "cp -af /usr/bin/ffprobe "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffprobe"
+        )
+
+        os.system(
+            "chown xtreamcodes:xtreamcodes "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffprobe"
+        )
+
+        os.system(
+            "chmod 755 "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffmpeg "
+            "/home/xtreamcodes/iptv_xtream_codes/bin/ffprobe"
+        )
+
+        printc("MODERN FFMPEG / FFPROBE ENABLED", col.OKGREEN, 2)
 
     # XMASTER LB heartbeat administrado por systemd.
     if rType == "LB":
