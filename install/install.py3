@@ -383,7 +383,7 @@ def check_runtime_binaries():
     return True
 
 
-def start():
+def start(rType):
     base = "/home/xtreamcodes/iptv_xtream_codes"
 
     os.system("chattr +i %s/GeoLite2.mmdb 2>/dev/null" % base)
@@ -396,6 +396,47 @@ def start():
     os.system(
         "wget %s/start_services.sh -qO %s/start_services.sh" % (RAW_BASE, base)
     )
+
+    # XMASTER: heartbeat exclusivo para Load Balancers.
+    if rType == "LB":
+        os.system("mkdir -p %s/tools >/dev/null 2>&1" % base)
+
+        os.system(
+            "wget -qO %s/tools/xmaster_heartbeat.php "
+            "%s/tools/xmaster_heartbeat.php"
+            % (base, RAW_BASE)
+        )
+
+        os.system(
+            "chown xtreamcodes:xtreamcodes "
+            "%s/tools/xmaster_heartbeat.php >/dev/null 2>&1"
+            % base
+        )
+
+        os.system(
+            "chmod 755 %s/tools/xmaster_heartbeat.php >/dev/null 2>&1"
+            % base
+        )
+
+        heartbeat_line = (
+            "pgrep -f '[x]master_heartbeat.php' >/dev/null || "
+            "sudo -u xtreamcodes "
+            "/home/xtreamcodes/iptv_xtream_codes/php/bin/php "
+            "/home/xtreamcodes/iptv_xtream_codes/tools/xmaster_heartbeat.php "
+            ">/dev/null 2>/dev/null &"
+        )
+
+        start_file = "%s/start_services.sh" % base
+
+        try:
+            start_data = open(start_file, "r").read()
+
+            if "xmaster_heartbeat.php" not in start_data:
+                with open(start_file, "a") as f:
+                    f.write("\n%s\n" % heartbeat_line)
+
+        except Exception as e:
+            print("WARNING: could not configure XMASTER heartbeat: %s" % e)
 
     # Instalar/reinstalar binarios específicos del sistema operativo.
     os.system(
@@ -480,7 +521,7 @@ if __name__ == "__main__":
                 encrypt(rHost, rUsername, rPassword, rDatabase, rServerID, rPort)
                 configure()
                 if rType.upper() == "MAIN": modifyNginx()
-                start()
+                start(rType.upper())
                 printc("XMASTER INSTALLATION COMPLETED!", col.OKGREEN, 2)
                 printc("YOUR XMASTER ADMIN DASHBOARD IS: http://%s:25500" % getIP())
                 if rType.upper() == "MAIN":
