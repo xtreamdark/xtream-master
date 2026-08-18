@@ -284,7 +284,7 @@ def configure():
         'echo "127.0.0.1    xtream-codes.com" >> /etc/hosts')
     os.system("chattr +i /etc/hosts >/dev/null 2>&1")
     os.system(
-        "sed -i 's|echo \"ODIN IpTV Panel https://discord.gg/mH6D7VWXmt \";|header(\"Location: https://www.google.com/\");|g' /home/xtreamcodes/iptv_xtream_codes/wwwdir/index.php")
+        "sed -i 's|echo \"ODIN IpTV Panel.*\";|header(\"Location: https://www.google.com/\");|g' /home/xtreamcodes/iptv_xtream_codes/wwwdir/index.php")
     printc("INSTALLING AND UPDATING YOUTUBE MODULE")
     os.system("sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/youtube-dl 2> /dev/null")
     os.system("sudo chmod a+rx /usr/local/bin/youtube-dl > /dev/null")
