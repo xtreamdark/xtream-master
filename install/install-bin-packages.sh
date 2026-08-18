@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-#if (test -f "/usr/bin/wget");then wget -O /root/install-bin-packages.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-packages.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/install-bin-packages.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-packages.sh;fi; bash /root/install-bin-packages.sh
+#if (test -f "/usr/bin/wget");then wget -O /root/install-bin-packages.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-packages.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/install-bin-packages.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-packages.sh;fi; bash /root/install-bin-packages.sh
 #
 #
 echo -e "\nChecking that minimal requirements are ok"
@@ -56,23 +56,23 @@ fi
 if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
 	cd
 	if [[ "$VER" = "22.04" ]]; then
- 		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
+ 		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		DEBIAN_FRONTEND=noninteractive dpkg -i xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		DEBIAN_FRONTEND=noninteractive apt-get -yf install
    		DEBIAN_FRONTEND=noninteractive dpkg -i xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		rm -f xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
 	else
-  		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
+  		wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
    		bash /root/php7.2rebuild.sh
    	fi
 fi
 if [[ "$OS" = "CentOs" || "$OS" = "CentOS-Stream" || "$OS" = "Fedora" ]]; then
-  	wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
+  	wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
    	bash /root/php7.2rebuild.sh
 
 fi

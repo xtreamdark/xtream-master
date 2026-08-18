@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-#if (test -f "/usr/bin/wget");then wget -O /root/install-bin-sub.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-sub.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/install-bin-sub.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-sub.sh;fi; bash /root/install-bin-sub.sh
+#if (test -f "/usr/bin/wget");then wget -O /root/install-bin-sub.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-sub.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/install-bin-sub.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-sub.sh;fi; bash /root/install-bin-sub.sh
 #
 #
 echo -e "\nChecking that minimal requirements are ok"
@@ -338,26 +338,26 @@ if [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]]; then
     		DEBIAN_FRONTEND=noninteractive apt-get -y install libcurl4
     		DEBIAN_FRONTEND=noninteractive apt-get -y install libmcrypt4
     		DEBIAN_FRONTEND=noninteractive apt-get -y install libgeoip1
-      		wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
+      		wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/xtreamdark/xtream-master/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
  		tar -zxvf "/tmp/xtreamcodes.tar.gz" -C "/home/xtreamcodes/"
- 		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb
-    		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
+ 		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb
+    		wget https://github.com/xtreamdark/xtream-master/releases/download/download/xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		dpkg -i xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		apt-get -yf install
    		dpkg -i xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
    		rm -f xtreamcodes-nginx_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-nginx-rtmp_1.24.0-1-Ubuntu_22.04.deb xtreamcodes-php_7.2.34-1-Ubuntu_22.04.deb xtreamcodes-php-mcrypt_1.0.5-1-Ubuntu_22.04.deb xtreamcodes-php-geoip_1.1.1-1-Ubuntu_22.04.deb xtreamcodes-php-igbinary_3.2.14-1-Ubuntu_22.04.deb
 	else
   		rm -f /etc/init.d/mariadb
-		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/depbuild.sh -O /root/depbuild.sh
+		wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/depbuild.sh -O /root/depbuild.sh
 		bash /root/depbuild.sh
- 		wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
+ 		wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/xtreamdark/xtream-master/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
   		mkdir -p /home/xtreamcodes/
  		tar -zxvf "/tmp/xtreamcodes.tar.gz" -C "/home/xtreamcodes/"
-  		wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
+  		wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
    		bash /root/php7.2rebuild.sh
    	fi
 fi
@@ -365,12 +365,12 @@ fi
 
 if [[ "$OS" = "CentOs" || "$OS" = "CentOS-Stream" || "$OS" = "Fedora" ]]; then
 	rm -f /etc/init.d/mariadb
-	wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/depbuild.sh -O /root/depbuild.sh
+	wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/depbuild.sh -O /root/depbuild.sh
 	bash /root/depbuild.sh
- 	wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
+ 	wget -q -O "/tmp/xtreamcodes.tar.gz" "https://github.com/xtreamdark/xtream-master/releases/download/download/sub_xtreamcodes_reborn_nobin.tar.gz"
   	mkdir -p /home/xtreamcodes/
  	tar -zxvf "/tmp/xtreamcodes.tar.gz" -C "/home/xtreamcodes/"
-  	wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
+  	wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
    	bash /root/php7.2rebuild.sh
 
 fi

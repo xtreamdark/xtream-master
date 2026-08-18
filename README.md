@@ -91,13 +91,13 @@ for start installer for main or sub
 
 
 ```
-sudo wget -O /root/install.py3  https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install.py3 && sudo python3.10 /root/install.py3
+sudo wget -O /root/install.py3  https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install.py3 && sudo python3.10 /root/install.py3
 ```
 
 silent installer for main online recommend
 
 ```
-sudo wget -O /root/install-silent.py3  https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-silent.py3 && sudo python3.10 /root/install-silent.py3
+sudo wget -O /root/install-silent.py3  https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-silent.py3 && sudo python3.10 /root/install-silent.py3
 ```
 
 
@@ -132,9 +132,9 @@ sudo: /home/xtreamcodes/iptv_xtream_codes/php/bin/php: command not found
 full binary rebuild require
 
 ```
-wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/depbuild.sh -O /root/depbuild.sh
+wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/depbuild.sh -O /root/depbuild.sh
 bash /root/depbuild.sh
-wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
+wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh
 bash /root/php7.2rebuild.sh
 /home/xtreamcodes/iptv_xtream_codes/start_services.sh
 ```
@@ -143,7 +143,7 @@ bash /root/php7.2rebuild.sh
 if nginx and nginx_rtmp error minimal rebuild require
 
 ```
-wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-packages.sh -O /root/install-bin-packages.sh
+wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-packages.sh -O /root/install-bin-packages.sh
 bash /root/install-bin-packages.sh
 /home/xtreamcodes/iptv_xtream_codes/start_services.sh
 ```

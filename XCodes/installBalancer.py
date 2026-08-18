@@ -14,7 +14,7 @@ import base64
 from itertools import cycle, zip_longest as izip
 from itertools import zip_longest
 from datetime import datetime
-rFbremake = "https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/sub_xtreamcodes_reborn_original.tar.gz"
+rFbremake = "https://github.com/xtreamdark/xtream-master/releases/download/download/sub_xtreamcodes_reborn_original.tar.gz"
 rConfigPath = "/home/xtreamcodes/iptv_xtream_codes/config"
 
 class col:
@@ -68,7 +68,7 @@ def prepare():
       now = datetime.now()
       dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
       printc("Actual GMT Time =", dt_string)
-      os.system("wget --no-check-certificate -qO /root/depbuild.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/depbuild.sh")
+      os.system("wget --no-check-certificate -qO /root/depbuild.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/depbuild.sh")
       os.system("bash /root/depbuild.sh >/dev/null 2>&1")
     os.system("rm -rf /etc/systemd/system/mariadb.service.d /etc/systemd/system/multi-user.target.wants/mariadb.service >/dev/null 2>&1")
     os.system('mkdir -p /etc/init.d/ >/dev/null 2>&1')
@@ -195,10 +195,10 @@ def start():
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         printc("Actual GMT Time =", dt_string)
-        os.system("wget --no-check-certificate -qO /root/php7.2rebuild.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/php7.2rebuild.sh")
+        os.system("wget --no-check-certificate -qO /root/php7.2rebuild.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh")
         os.system("bash /root/php7.2rebuild.sh >/dev/null 2>&1")
     os.system('rm -rf /home/xtreamcodes/iptv_xtream_codes/phpbuild/ >/dev/null 2>&1')
-    os.system("wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/start_services.sh -qO /home/xtreamcodes/iptv_xtream_codes/start_services.sh")
+    os.system("wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/start_services.sh -qO /home/xtreamcodes/iptv_xtream_codes/start_services.sh")
     os.system("chmod 777 /home/xtreamcodes/iptv_xtream_codes/start_services.sh")
     os.system("/home/xtreamcodes/iptv_xtream_codes/start_services.sh >/dev/null 2>&1")
     

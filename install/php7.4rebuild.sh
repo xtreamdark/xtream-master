@@ -2,7 +2,7 @@
 # sudo apt-get update
 # sudo apt-get -y install wget
 # sudo yum -y install wget
-# sudo wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh && sudo bash /root/php7.2build.sh
+# sudo wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2rebuild.sh -O /root/php7.2rebuild.sh && sudo bash /root/php7.2build.sh
 echo -e "\nChecking that minimal requirements are ok"
 # Ensure the OS is compatible with the launcher
 if [ -f /etc/almalinux-release ]; then
@@ -180,25 +180,25 @@ killall nginx
 kill $(ps aux | grep 'xtreamcodes' | grep -v grep | grep -v 'start_services.sh' | awk '{print $2}') 2>/dev/null
 rm -f /home/xtreamcodes/iptv_xtream_codes/nginx/sbin/*
 make install
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/balance.conf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/balance.conf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi.conf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/fastcgi.conf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi.conf.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/fastcgi.conf.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/fastcgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/fastcgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/koi-utf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/koi-utf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/koi-win https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/koi-win
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/mime.types https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/mime.types
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/mime.types.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/mime.types.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/nginx.conf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/nginx.conf.final
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/nginx.conf.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/nginx.conf.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/scgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/scgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/scgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/scgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.crt https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/server.crt
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.csr https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/server.csr
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.key https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/server.key
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/uwsgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/uwsgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/uwsgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/uwsgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/win-utf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx/conf/win-utf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/balance.conf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/balance.conf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi.conf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/fastcgi.conf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi.conf.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/fastcgi.conf.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/fastcgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/fastcgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/fastcgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/koi-utf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/koi-utf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/koi-win https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/koi-win
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/mime.types https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/mime.types
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/mime.types.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/mime.types.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/nginx.conf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/nginx.conf.final
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/nginx.conf.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/nginx.conf.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/scgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/scgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/scgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/scgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.crt https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/server.crt
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.csr https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/server.csr
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/server.key https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/server.key
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/uwsgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/uwsgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/uwsgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/uwsgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx/conf/win-utf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx/conf/win-utf
 cd /home/xtreamcodes/iptv_xtream_codes/phpbuild/
 rm -rf /home/xtreamcodes/iptv_xtream_codes/phpbuild/ngx_http_geoip2_module
 rm -rf /home/xtreamcodes/iptv_xtream_codes/phpbuild/nginx_rtmp-1.24.0
@@ -272,21 +272,21 @@ rm -f /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/sbin/*
 #cp objs/nginx_rtmp /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/sbin/
 make install
 mv /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/sbin/nginx /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/sbin/nginx_rtmp
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi.conf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/fastcgi.conf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi.conf.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/fastcgi.conf.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/fastcgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/fastcgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/koi-utf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/koi-utf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/koi-win https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/koi-win
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/mime.types https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/mime.types
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/mime.types.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/mime.types.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/nginx.conf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/nginx.conf
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/nginx.conf.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/nginx.conf.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/scgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/scgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/scgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/scgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/uwsgi_params https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/uwsgi_params
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/uwsgi_params.default https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/uwsgi_params.default
-wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/win-utf https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/nginx_rtmp/conf/win-utf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi.conf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/fastcgi.conf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi.conf.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/fastcgi.conf.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/fastcgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/fastcgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/fastcgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/koi-utf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/koi-utf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/koi-win https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/koi-win
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/mime.types https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/mime.types
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/mime.types.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/mime.types.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/nginx.conf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/nginx.conf
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/nginx.conf.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/nginx.conf.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/scgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/scgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/scgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/scgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/uwsgi_params https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/uwsgi_params
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/uwsgi_params.default https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/uwsgi_params.default
+wget -O /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/conf/win-utf https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/nginx_rtmp/conf/win-utf
 cd  /home/xtreamcodes/iptv_xtream_codes/phpbuild/
 remigit=https://git.remirepo.net/cgit/rpms/php/php74.git/plain
 wget $remigit/php-7.4.0-httpd.patch -O /home/xtreamcodes/iptv_xtream_codes/phpbuild/php-7.4.0-httpd.patch

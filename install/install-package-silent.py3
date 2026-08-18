@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.10
 # -*- coding: utf-8 -*-
 #
-# sudo wget -O /root/install-silent.py3  https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-silent.py3 && sudo python3.10 /root/install-silent.py3
+# sudo wget -O /root/install-silent.py3  https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-silent.py3 && sudo python3.10 /root/install-silent.py3
 #
 import os
 # os.system('pip install requests >/dev/null')
@@ -20,8 +20,8 @@ import base64
 from itertools import cycle, zip_longest as izip
 from itertools import zip_longest
 from datetime import datetime
-rDownloadURL = {"main": "https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-main.sh",
-                "sub": "https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-sub.sh"}
+rDownloadURL = {"main": "https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-main.sh",
+                "sub": "https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-sub.sh"}
 #rPackages = ["libwebp6", "libjpeg62", "libcurl4", "libxslt1-dev", "libgeoip-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server"]
 rInstall = {"MAIN": "main", "LB": "sub"}
 eMySQLenc = "IyBYdHJlYW0gQ29kZXMKCltjbGllbnRdCnBvcnQgICAgICAgICAgICA9IDMzMDYKCltteXNxbGRfc2FmZV0KbmljZSAgICAgICAgICAgID0gMAoKW215c3FsZF0KdXNlciAgICAgICAgICAgID0gbXlzcWwKcG9ydCAgICAgICAgICAgID0gNzk5OQpiYXNlZGlyICAgICAgICAgPSAvdXNyCmRhdGFkaXIgICAgICAgICA9IC92YXIvbGliL215c3FsCnRtcGRpciAgICAgICAgICA9IC90bXAKbGMtbWVzc2FnZXMtZGlyID0gL3Vzci9zaGFyZS9teXNxbApza2lwLWV4dGVybmFsLWxvY2tpbmcKc2tpcC1uYW1lLXJlc29sdmU9MQoKYmluZC1hZGRyZXNzICAgICAgICAgICAgPSAqCmtleV9idWZmZXJfc2l6ZSA9IDEyOE0KCm15aXNhbV9zb3J0X2J1ZmZlcl9zaXplID0gNE0KbWF4X2FsbG93ZWRfcGFja2V0ICAgICAgPSA2NE0KbXlpc2FtLXJlY292ZXItb3B0aW9ucyA9IEJBQ0tVUAptYXhfbGVuZ3RoX2Zvcl9zb3J0X2RhdGEgPSA4MTkyCnF1ZXJ5X2NhY2hlX2xpbWl0ICAgICAgID0gNE0KcXVlcnlfY2FjaGVfc2l6ZSAgICAgICAgPSAyNTZNCgoKZXhwaXJlX2xvZ3NfZGF5cyAgICAgICAgPSAxMAptYXhfYmlubG9nX3NpemUgICAgICAgICA9IDEwME0KCm1heF9jb25uZWN0aW9ucyAgPSAyMDAwMApiYWNrX2xvZyA9IDQwOTYKb3Blbl9maWxlc19saW1pdCA9IDIwMjQwCmlubm9kYl9vcGVuX2ZpbGVzID0gMjAyNDAKbWF4X2Nvbm5lY3RfZXJyb3JzID0gMzA3Mgp0YWJsZV9vcGVuX2NhY2hlID0gNDA5Ngp0YWJsZV9kZWZpbml0aW9uX2NhY2hlID0gNDA5NgoKCnRtcF90YWJsZV9zaXplID0gMUcKbWF4X2hlYXBfdGFibGVfc2l6ZSA9IDFHCgppbm5vZGJfYnVmZmVyX3Bvb2xfc2l6ZSA9IDEwRwppbm5vZGJfYnVmZmVyX3Bvb2xfaW5zdGFuY2VzID0gMTAKaW5ub2RiX3JlYWRfaW9fdGhyZWFkcyA9IDY0Cmlubm9kYl93cml0ZV9pb190aHJlYWRzID0gNjQKaW5ub2RiX3RocmVhZF9jb25jdXJyZW5jeSA9IDAKaW5ub2RiX2ZsdXNoX2xvZ19hdF90cnhfY29tbWl0ID0gMAppbm5vZGJfZmx1c2hfbWV0aG9kID0gT19ESVJFQ1QKcGVyZm9ybWFuY2Vfc2NoZW1hID0gMAppbm5vZGItZmlsZS1wZXItdGFibGUgPSAxCmlubm9kYl9pb19jYXBhY2l0eT0yMDAwMAppbm5vZGJfdGFibGVfbG9ja3MgPSAwCmlubm9kYl9sb2NrX3dhaXRfdGltZW91dCA9IDAKI2lubm9kYl9kZWFkbG9ja19kZXRlY3QgPSAwCgoKc3FsLW1vZGU9Ik5PX0VOR0lORV9TVUJTVElUVVRJT04iCgpbbXlzcWxkdW1wXQpxdWljawpxdW90ZS1uYW1lcwptYXhfYWxsb3dlZF9wYWNrZXQgICAgICA9IDE2TQoKW215c3FsXQoKW2lzYW1jaGtdCmtleV9idWZmZXJfc2l6ZSAgICAgICAgICAgICAgPSAxNk0="
@@ -223,7 +223,7 @@ def configure():
     if not " xtream-codes.com" in open("/etc/hosts").read(): os.system(
         'echo "127.0.0.1    xtream-codes.com" >> /etc/hosts')
     os.system("chattr +i /etc/hosts >/dev/null 2>&1")
-    #os.system('chattr -i /home/odiniptv/GeoLite2.mmdb >/dev/null && rm -rf /home/odiniptv/admin 2>/dev/null && wget -O /tmp/update.zip "https://github.com/amidevous/odiniptvpanelfreesourcecode/releases/download/download/update_original.zip" 2>/dev/null && unzip /tmp/update.zip -d /tmp/update/ >/dev/null && cp -rf /tmp/update/XtreamUI-master/* /home/odiniptv/ >/dev/null && rm -rf /tmp/update/XtreamUI-master >/dev/null && rm /tmp/update.zip >/dev/null && rm -rf /tmp/update >/dev/null && chown -R odiniptv:odiniptv /home/odiniptv/ >/dev/null && chmod +x /home/odiniptv/permissions.sh >/dev/null && /home/odiniptv/permissions.sh >/dev/null && find /home/odiniptv/ -type d -not \( -name .update -prune \) -exec chmod -R 777 {} + >/dev/null')
+    #os.system('chattr -i /home/odiniptv/GeoLite2.mmdb >/dev/null && rm -rf /home/odiniptv/admin 2>/dev/null && wget -O /tmp/update.zip "https://github.com/xtreamdark/xtream-master/releases/download/download/update_original.zip" 2>/dev/null && unzip /tmp/update.zip -d /tmp/update/ >/dev/null && cp -rf /tmp/update/XtreamUI-master/* /home/odiniptv/ >/dev/null && rm -rf /tmp/update/XtreamUI-master >/dev/null && rm /tmp/update.zip >/dev/null && rm -rf /tmp/update >/dev/null && chown -R odiniptv:odiniptv /home/odiniptv/ >/dev/null && chmod +x /home/odiniptv/permissions.sh >/dev/null && /home/odiniptv/permissions.sh >/dev/null && find /home/odiniptv/ -type d -not \( -name .update -prune \) -exec chmod -R 777 {} + >/dev/null')
     os.system(
         "sed -i 's|echo \"ODIN IpTV Panel https://discord.gg/mH6D7VWXmt \";|header(\"Location: https://www.google.com/\");|g' /home/odiniptv/wwwdir/index.php")
     printc("INSTALLING AND UPDATING YOUTUBE MODULE")
@@ -244,9 +244,9 @@ def start():
     os.system("chmod +x /home/odiniptv/php/bin/php 2>/dev/null")
     os.system("chmod +x /home/odiniptv/php/sbin/php-fpm 2>/dev/null")
     os.system("sysctl -w kernel.core_pattern='|/bin/false' >/dev/null 2>&1")
-    os.system("wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/start_services.sh -qO /home/odiniptv/start_services.sh")
+    os.system("wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/start_services.sh -qO /home/odiniptv/start_services.sh")
     os.system("chmod 777 /home/odiniptv/start_services.sh")
-    #os.system("wget -qO /tmp/install-bin-packages.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-packages.sh >/dev/null 2>&1")
+    #os.system("wget -qO /tmp/install-bin-packages.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/install-bin-packages.sh >/dev/null 2>&1")
     #os.system('bash /tmp/install-bin-packages.sh >/dev/null 2>&1')
     os.system('rm -rf /home/odiniptv/phpbuild/ >/dev/null 2>&1')
     os.system("/home/odiniptv/start_services.sh >/dev/null 2>&1")

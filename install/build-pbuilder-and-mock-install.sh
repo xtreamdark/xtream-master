@@ -1,8 +1,8 @@
 #!/bin/bash
 mkdir -p $HOME/pbuilder
 rm -rf $HOME/pbuilder/*
-wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/pbuilder/pbuilder-bionic -O $HOME/pbuilder/pbuilder-config.conf
-sudo wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/pbuilder/pbuilder-bionicbin -O /usr/bin/pbuilder-config
+wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/pbuilder/pbuilder-bionic -O $HOME/pbuilder/pbuilder-config.conf
+sudo wget https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/pbuilder/pbuilder-bionicbin -O /usr/bin/pbuilder-config
 ubuntuori () {
    rm -f $HOME/pbuilder/pbuilder-$1.conf
    cp $HOME/pbuilder/pbuilder-config.conf $HOME/pbuilder/pbuilder-$1.conf

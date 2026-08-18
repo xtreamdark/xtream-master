@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-#if (test -f "/usr/bin/wget");then wget -O /root/php7.2build.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2build.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/php7.2build.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/php7.2build.sh;fi; bash /root/php7.2build.sh
+#if (test -f "/usr/bin/wget");then wget -O /root/php7.2build.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2build.sh;fi; if (test -f "/usr/bin/curl");then curl -L --output /root/php7.2build.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/php7.2build.sh;fi; bash /root/php7.2build.sh
 #
 #
 echo -e "\nChecking that minimal requirements are ok"
@@ -52,13 +52,13 @@ if [ ! -f "/etc/yum.repos.d/docker-ce.repo" ]; then
     echo "please install official docker and restart"
     exit
 fi
-wget --no-check-certificate -qO- https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/depbuild.sh | bash -s
-wget --no-check-certificate -qO- https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/build-pbuilder-and-mock-install.sh | bash -s
+wget --no-check-certificate -qO- https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/depbuild.sh | bash -s
+wget --no-check-certificate -qO- https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/build-pbuilder-and-mock-install.sh | bash -s
 ubunbuild () {
 cd /root
 mkdir -p /root/deb/
-wget -O /root/Dockerfile_Ubuntu-$1 https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/Dockerfile/Dockerfile_Ubuntu-$1
-wget -O /root/Ubuntu-$1.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/Dockerfile/Ubuntu-$1.sh
+wget -O /root/Dockerfile_Ubuntu-$1 https://raw.githubusercontent.com/xtreamdark/xtream-master/main/Dockerfile/Dockerfile_Ubuntu-$1
+wget -O /root/Ubuntu-$1.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/Dockerfile/Ubuntu-$1.sh
 bash Ubuntu-$1.sh
 sshlogin="sshpass -p Ash82qc44L6ZVv /usr/bin/ssh -t -o StrictHostKeyChecking=no -p 222 root@127.0.0.1 "
 scplogin="sshpass -p Ash82qc44L6ZVv /usr/bin/scp -o StrictHostKeyChecking=no -P 222 root@127.0.0.1:"
@@ -71,8 +71,8 @@ rm -rf /root/Dockerfile_Ubuntu-$1 /root/Ubuntu-$1.sh
 debbuild () {
 cd /root
 mkdir -p /root/deb/
-wget -O /root/Dockerfile_debian-$1 https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/Dockerfile/Dockerfile_debian-$1
-wget -O /root/debian-$1.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/Dockerfile/debian-$1.sh
+wget -O /root/Dockerfile_debian-$1 https://raw.githubusercontent.com/xtreamdark/xtream-master/main/Dockerfile/Dockerfile_debian-$1
+wget -O /root/debian-$1.sh https://raw.githubusercontent.com/xtreamdark/xtream-master/main/Dockerfile/debian-$1.sh
 bash /root/debian-$1.sh
 sshlogin="sshpass -p Ash82qc44L6ZVv /usr/bin/ssh -t -o StrictHostKeyChecking=no -p 222 root@127.0.0.1 "
 scplogin="sshpass -p Ash82qc44L6ZVv /usr/bin/scp -o StrictHostKeyChecking=no -P 222 root@127.0.0.1:"
@@ -83,16 +83,16 @@ $scplogin/root/$3 /root/deb/
 rm -rf /root/Dockerfile_debian-$1 /root/debian-$1.sh
 }
 ubunbuild 18.04 \
-https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/python3.10/debian/build.sh \
+https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/python3.10/debian/build.sh \
 python3.10-build-Ubuntu-18.04.tar
 ubunbuild 20.04 \
-https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/python3.10/debian/build.sh \
+https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/python3.10/debian/build.sh \
 python3.10-build-Ubuntu-20.04.tar
 debbuild 11 \
-https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/python3.10/debian/build.sh \
+https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/python3.10/debian/build.sh \
 python3.10-build-debian-11.tar
 debbuild 12 \
-https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/python3.10/debian/build.sh \
+https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/python3.10/debian/build.sh \
 python3.10-build-debian-12.tar
 exit
 if  [[ "$OS" = "Ubuntu" || "$OS" = "debian" ]] ; then
@@ -376,13 +376,13 @@ elif  [[ "$OS" = "CentOs" || "$OS" = "CentOS-Stream" || "$OS" = "Fedora" ]] ; th
       	rm -rf debian
         wget http://nginx.org/download/nginx-1.24.0.tar.gz
 	rm -f $(rpm --eval %{_specdir})/xtreamcodes-nginx.spec
- 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-nginx.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/nginx/xtreamcodes-nginx.spec
+ 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-nginx.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/nginx/xtreamcodes-nginx.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-nginx.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-nginx-1.24.0-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-nginx_1.24.0-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
 	cd $(rpm --eval %{_sourcedir})
  	rm -f $(rpm --eval %{_specdir})/xtreamcodes-nginx-rtmp.spec
-	wget -O $(rpm --eval %{_specdir})/xtreamcodes-nginx-rtmp.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/nginx_rtmp/xtreamcodes-nginx-rtmp.spec
+	wget -O $(rpm --eval %{_specdir})/xtreamcodes-nginx-rtmp.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/nginx_rtmp/xtreamcodes-nginx-rtmp.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-nginx-rtmp.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-nginx-rtmp-1.24.0-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-nginx-rtmp_1.24.0-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
@@ -394,28 +394,28 @@ elif  [[ "$OS" = "CentOs" || "$OS" = "CentOS-Stream" || "$OS" = "Fedora" ]] ; th
  	cp debian/patches/0087-Add-minimal-OpenSSL-3.0-patch.patch $(rpm --eval %{_sourcedir})/
   	rm -rf debian
    	rm -f $(rpm --eval %{_specdir})/xtreamcodes-php.spec
-	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/php/xtreamcodes-php.spec
+	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/php/xtreamcodes-php.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-php.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-php-7.2.34-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-php_7.2.34-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
 	cd $(rpm --eval %{_sourcedir})
  	wget --no-check-certificate -O $(rpm --eval %{_sourcedir})/mcrypt-1.0.5.tgz https://pecl.php.net/get/mcrypt-1.0.5.tgz
   	rm -f $(rpm --eval %{_specdir})/xtreamcodes-php-mcrypt.spec
-	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-mcrypt.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/php/xtreamcodes-php-mcrypt.spec
+	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-mcrypt.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/php/xtreamcodes-php-mcrypt.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-php-mcrypt.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-php-mcrypt-1.0.5-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-php-mcrypt_1.0.5-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
 	cd $(rpm --eval %{_sourcedir})
  	wget --no-check-certificate -O $(rpm --eval %{_sourcedir})/geoip-1.1.1.tgz https://pecl.php.net/get/geoip-1.1.1.tgz
 	rm -f $(rpm --eval %{_specdir})/xtreamcodes-php-geoip.spec
- 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-geoip.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/php/xtreamcodes-php-geoip.spec
+ 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-geoip.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/php/xtreamcodes-php-geoip.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-php-geoip.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-php-geoip-1.1.1-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-php-geoip_1.1.1-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
 	cd $(rpm --eval %{_sourcedir})
  	wget --no-check-certificate -O $(rpm --eval %{_sourcedir})/igbinary-3.2.14.tgz https://pecl.php.net/get/igbinary-3.2.14.tgz
 	rm -f $(rpm --eval %{_specdir})/xtreamcodes-php-igbinary.spec
- 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-igbinary.spec https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/package/php/xtreamcodes-php-igbinary.spec
+ 	wget -O $(rpm --eval %{_specdir})/xtreamcodes-php-igbinary.spec https://raw.githubusercontent.com/xtreamdark/xtream-master/main/install/package/php/xtreamcodes-php-igbinary.spec
 	rpmbuild -ba $(rpm --eval %{_specdir})/xtreamcodes-php-igbinary.spec
 	mv $(rpm --eval %{_rpmdir})/x86_64/xtreamcodes-php-igbinary-3.2.14-1.x86_64.rpm /home/xtreamcodes/iptv_xtream_codes/phpbuild/xtreamcodes-php-igbinary_3.2.14-1-"$OS"_"$VER".rpm
  	yum -y install /home/xtreamcodes/iptv_xtream_codes/phpbuild/*.rpm
