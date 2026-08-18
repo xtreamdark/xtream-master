@@ -71,15 +71,29 @@ def getVersion():
 
 
 def printc(rText, rColour=col.OKBLUE, rPadding=0):
-    print("%s ┌────── ODIN FREE CLEAN INSTALL - DISCORD: https://discord.gg/mH6D7VWXmt ─────┐ %s" % (
+    print("%s ┌──────────────────────── XMASTER INSTALLER ────────────────────────┐ %s" % (
         rColour, col.ENDC))
-    for i in range(rPadding): print("%s                                                              %s" % (
-        rColour, col.ENDC))
+    for i in range(rPadding):
+        print("%s                                                               %s" % (
+            rColour, col.ENDC))
+
     print("%s           %s%s%s            %s" % (
-        rColour, " " * (20 - (len(rText) // 2)), rText, " " * (40 - (20 - (len(rText) // 2)) - len(rText)),
-        col.ENDC))
-    for i in range(rPadding): print("%s                                                               %s" % (
+        rColour,
+        " " * (20 - (len(rText) // 2)),
+        rText,
+        " " * (40 - (20 - (len(rText) // 2)) - len(rText)),
+        col.ENDC
+    ))
+
+    print("%s                 Creado y mantenido por Darksite                  %s" % (
         rColour, col.ENDC))
+    print("%s                 Telegram: https://t.me/xmastertv                 %s" % (
+        rColour, col.ENDC))
+
+    for i in range(rPadding):
+        print("%s                                                               %s" % (
+            rColour, col.ENDC))
+
     print("%s └─────────────────────────────────────────────────────────────────────────────┘ %s" % (
         rColour, col.ENDC))
     print(" ")
@@ -402,7 +416,7 @@ def start():
 
         if not check_runtime_binaries():
             printc("ERROR: NGINX / NGINX_RTMP / PHP BINARIES ARE NOT WORKING")
-            raise RuntimeError("ODIN runtime binaries failed validation")
+            raise RuntimeError("XMASTER runtime binaries failed validation")
 
     os.system("rm -rf %s/phpbuild/ >/dev/null 2>&1" % base)
 
@@ -428,7 +442,7 @@ def modifyNginx():
 if __name__ == "__main__":
     #os.system('clear')
     #installsscreen()
-    printc("ODIN - CLEAN MARIADB INSTALLATION TO Ubuntu 18.04", col.OKGREEN, 2)
+    printc("XMASTER - INSTALLATION FOR Ubuntu 22.04", col.OKGREEN, 2)
     try:
         rType = input("  INSTALLATION TYPE [MAIN, LB]: ")
     except KeyboardInterrupt:
@@ -467,8 +481,8 @@ if __name__ == "__main__":
                 configure()
                 if rType.upper() == "MAIN": modifyNginx()
                 start()
-                printc("ODIN INSTALLATION COMPLETED!", col.OKGREEN, 2)
-                printc("YOUR ODIN ADMIN DASHBOARD IS: http://%s:25500" % getIP())
+                printc("XMASTER INSTALLATION COMPLETED!", col.OKGREEN, 2)
+                printc("YOUR XMASTER ADMIN DASHBOARD IS: http://%s:25500" % getIP())
                 if rType.upper() == "MAIN":
                     printc("Please store your MySQL password!")
                     printc(rPassword)
