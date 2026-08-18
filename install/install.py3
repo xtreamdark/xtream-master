@@ -20,8 +20,20 @@ import base64
 from itertools import cycle, zip_longest as izip
 from itertools import zip_longest
 from datetime import datetime
-rDownloadURL = {"main": "https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-main.sh",
-                "sub": "https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-sub.sh"}
+GITHUB_OWNER = "xtreamdark"
+GITHUB_REPO = "xtream-master"
+GITHUB_BRANCH = "main"
+
+RAW_BASE = "https://raw.githubusercontent.com/%s/%s/%s" % (
+    GITHUB_OWNER,
+    GITHUB_REPO,
+    GITHUB_BRANCH
+)
+
+rDownloadURL = {
+    "main": RAW_BASE + "/install/install-bin-main.sh",
+    "sub": RAW_BASE + "/install/install-bin-sub.sh"
+}
 rInstall = {"MAIN": "main", "LB": "sub"}
 eMySQLenc = "IyBYdHJlYW0gQ29kZXMKCltjbGllbnRdCnBvcnQgICAgICAgICAgICA9IDMzMDYKCltteXNxbGRfc2FmZV0KbmljZSAgICAgICAgICAgID0gMAoKW215c3FsZF0KdXNlciAgICAgICAgICAgID0gbXlzcWwKcG9ydCAgICAgICAgICAgID0gNzk5OQpiYXNlZGlyICAgICAgICAgPSAvdXNyCmRhdGFkaXIgICAgICAgICA9IC92YXIvbGliL215c3FsCnRtcGRpciAgICAgICAgICA9IC90bXAKbGMtbWVzc2FnZXMtZGlyID0gL3Vzci9zaGFyZS9teXNxbApza2lwLWV4dGVybmFsLWxvY2tpbmcKc2tpcC1uYW1lLXJlc29sdmU9MQoKYmluZC1hZGRyZXNzICAgICAgICAgICAgPSAqCmtleV9idWZmZXJfc2l6ZSA9IDEyOE0KCm15aXNhbV9zb3J0X2J1ZmZlcl9zaXplID0gNE0KbWF4X2FsbG93ZWRfcGFja2V0ICAgICAgPSA2NE0KbXlpc2FtLXJlY292ZXItb3B0aW9ucyA9IEJBQ0tVUAptYXhfbGVuZ3RoX2Zvcl9zb3J0X2RhdGEgPSA4MTkyCnF1ZXJ5X2NhY2hlX2xpbWl0ICAgICAgID0gNE0KcXVlcnlfY2FjaGVfc2l6ZSAgICAgICAgPSAyNTZNCgoKZXhwaXJlX2xvZ3NfZGF5cyAgICAgICAgPSAxMAptYXhfYmlubG9nX3NpemUgICAgICAgICA9IDEwME0KCm1heF9jb25uZWN0aW9ucyAgPSAyMDAwMApiYWNrX2xvZyA9IDQwOTYKb3Blbl9maWxlc19saW1pdCA9IDIwMjQwCmlubm9kYl9vcGVuX2ZpbGVzID0gMjAyNDAKbWF4X2Nvbm5lY3RfZXJyb3JzID0gMzA3Mgp0YWJsZV9vcGVuX2NhY2hlID0gNDA5Ngp0YWJsZV9kZWZpbml0aW9uX2NhY2hlID0gNDA5NgoKCnRtcF90YWJsZV9zaXplID0gMUcKbWF4X2hlYXBfdGFibGVfc2l6ZSA9IDFHCgppbm5vZGJfYnVmZmVyX3Bvb2xfc2l6ZSA9IDEwRwppbm5vZGJfYnVmZmVyX3Bvb2xfaW5zdGFuY2VzID0gMTAKaW5ub2RiX3JlYWRfaW9fdGhyZWFkcyA9IDY0Cmlubm9kYl93cml0ZV9pb190aHJlYWRzID0gNjQKaW5ub2RiX3RocmVhZF9jb25jdXJyZW5jeSA9IDAKaW5ub2RiX2ZsdXNoX2xvZ19hdF90cnhfY29tbWl0ID0gMAppbm5vZGJfZmx1c2hfbWV0aG9kID0gT19ESVJFQ1QKcGVyZm9ybWFuY2Vfc2NoZW1hID0gMAppbm5vZGItZmlsZS1wZXItdGFibGUgPSAxCmlubm9kYl9pb19jYXBhY2l0eT0yMDAwMAppbm5vZGJfdGFibGVfbG9ja3MgPSAwCmlubm9kYl9sb2NrX3dhaXRfdGltZW91dCA9IDAKI2lubm9kYl9kZWFkbG9ja19kZXRlY3QgPSAwCgoKc3FsLW1vZGU9Ik5PX0VOR0lORV9TVUJTVElUVVRJT04iCgpbbXlzcWxkdW1wXQpxdWljawpxdW90ZS1uYW1lcwptYXhfYWxsb3dlZF9wYWNrZXQgICAgICA9IDE2TQoKW215c3FsXQoKW2lzYW1jaGtdCmtleV9idWZmZXJfc2l6ZSAgICAgICAgICAgICAgPSAxNk0="
 rMySQLCnf = base64.b64decode(eMySQLenc).decode('utf-8')
@@ -266,25 +278,141 @@ def configure():
     os.system("sudo chmod a+rx /home/xtreamcodes/iptv_xtream_codes/bin/youtube-dl > /dev/null")
 
 
+
+def fix_runtime_paths():
+    base = "/home/xtreamcodes/iptv_xtream_codes"
+
+    targets = [
+        "start_services.sh",
+        "admin/functions.php",
+        "nginx/conf/nginx.conf",
+        "nginx/conf/nginx.conf.final",
+        "nginx/conf/balance.conf",
+        "nginx_rtmp/conf/nginx.conf",
+        "php/etc/VaiIb8.conf",
+        "php/etc/JdlJXm.conf",
+        "php/etc/CWcfSP.conf",
+        "php/lib/php.ini",
+    ]
+
+    replacements = [
+        ("/home/odiniptv", "/home/xtreamcodes/iptv_xtream_codes"),
+        ("odiniptv:odiniptv", "xtreamcodes:xtreamcodes"),
+        ("user  odiniptv;", "user  xtreamcodes;"),
+        ("user  :odiniptv;", "user  xtreamcodes;"),
+        ("user = odiniptv", "user = xtreamcodes"),
+        ("group = odiniptv", "group = xtreamcodes"),
+        ("listen.owner = odiniptv", "listen.owner = xtreamcodes"),
+        ("listen.group = odiniptv", "listen.group = xtreamcodes"),
+        ("[odiniptv]", "[xtreamcodes]"),
+        ("sudo -u odiniptv", "sudo -u xtreamcodes"),
+        ("grep 'odiniptv'", "grep 'xtreamcodes'"),
+    ]
+
+    for rel in targets:
+        path = os.path.join(base, rel)
+
+        if not os.path.isfile(path):
+            continue
+
+        try:
+            with open(path, "r", errors="ignore") as f:
+                data = f.read()
+
+            for old, new in replacements:
+                data = data.replace(old, new)
+
+            with open(path, "w") as f:
+                f.write(data)
+
+        except Exception as e:
+            print("WARNING runtime fix %s: %s" % (path, e))
+
+    os.system("chown -R xtreamcodes:xtreamcodes %s >/dev/null 2>&1" % base)
+
+    os.system("chmod +x %s/start_services.sh >/dev/null 2>&1" % base)
+    os.system("chmod +x %s/nginx/sbin/nginx >/dev/null 2>&1" % base)
+    os.system("chmod +x %s/nginx_rtmp/sbin/nginx_rtmp >/dev/null 2>&1" % base)
+    os.system("chmod +x %s/php/bin/php >/dev/null 2>&1" % base)
+    os.system("chmod +x %s/php/sbin/php-fpm >/dev/null 2>&1" % base)
+
+
+def check_runtime_binaries():
+    base = "/home/xtreamcodes/iptv_xtream_codes"
+
+    binaries = [
+        base + "/nginx/sbin/nginx",
+        base + "/nginx_rtmp/sbin/nginx_rtmp",
+        base + "/php/bin/php",
+    ]
+
+    for binary in binaries:
+        if not os.path.isfile(binary):
+            print("ERROR: Missing binary: %s" % binary)
+            return False
+
+        try:
+            rc = subprocess.call(
+                [binary, "-version"] if "nginx" in binary else [binary, "-v"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+
+            if rc != 0:
+                print("ERROR: Binary test failed: %s" % binary)
+                return False
+
+        except Exception as e:
+            print("ERROR testing %s: %s" % (binary, e))
+            return False
+
+    return True
+
+
 def start():
-    os.system("chattr +i /home/xtreamcodes/iptv_xtream_codes/GeoLite2.mmdb 2>/dev/null")
-    os.system("chmod 644 /home/xtreamcodes/iptv_xtream_codes/php/VaiIb8.pid 2>/dev/null")
-    os.system("chmod 644 /home/xtreamcodes/iptv_xtream_codes/php/JdlJXm.pid 2>/dev/null")
-    os.system("chmod 644 /home/xtreamcodes/iptv_xtream_codes/php/CWcfSP.pid 2>/dev/null")
-    os.system("chmod +x /home/xtreamcodes/iptv_xtream_codes/nginx/sbin/nginx 2>/dev/null")
-    os.system("chmod +x /home/xtreamcodes/iptv_xtream_codes/nginx_rtmp/sbin/nginx_rtmp 2>/dev/null")
-    os.system("chmod +x /home/xtreamcodes/iptv_xtream_codes/php/bin/php 2>/dev/null")
-    os.system("chmod +x /home/xtreamcodes/iptv_xtream_codes/php/sbin/php-fpm 2>/dev/null")
-    os.system("sysctl -w kernel.core_pattern='|/bin/false' >/dev/null 2>&1")
-    os.system("wget https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/start_services.sh -qO /home/xtreamcodes/iptv_xtream_codes/start_services.sh")
-    os.system("chmod 777 /home/xtreamcodes/iptv_xtream_codes/start_services.sh")
-    os.system("wget -qO /tmp/install-bin-packages.sh https://github.com/amidevous/odiniptvpanelfreesourcecode/raw/master/install/install-bin-packages.sh >/dev/null 2>&1")
-    os.system('bash /tmp/install-bin-packages.sh >/dev/null 2>&1')
-    os.system('rm -rf /home/xtreamcodes/iptv_xtream_codes/phpbuild/ >/dev/null 2>&1')
-    os.system("/home/xtreamcodes/iptv_xtream_codes/start_services.sh >/dev/null 2>&1")
+    base = "/home/xtreamcodes/iptv_xtream_codes"
+
+    os.system("chattr +i %s/GeoLite2.mmdb 2>/dev/null" % base)
+    os.system("chmod 644 %s/php/VaiIb8.pid 2>/dev/null" % base)
+    os.system("chmod 644 %s/php/JdlJXm.pid 2>/dev/null" % base)
+    os.system("chmod 644 %s/php/CWcfSP.pid 2>/dev/null" % base)
+
+    # Obtener start_services del proyecto original.
+    # Después se corrige automáticamente para la estructura xtreamcodes.
+    os.system(
+        "wget %s/start_services.sh -qO %s/start_services.sh" % (RAW_BASE, base)
+    )
+
+    # Instalar/reinstalar binarios específicos del sistema operativo.
+    os.system(
+        "wget -qO /tmp/install-bin-packages.sh %s/install/install-bin-packages.sh >/dev/null 2>&1" % RAW_BASE
+    )
+
+    os.system("bash /tmp/install-bin-packages.sh >/dev/null 2>&1")
+
+    # Corregir cualquier archivo antiguo descargado por TAR/ZIP/update.
+    fix_runtime_paths()
+
+    # Verificar nginx, nginx_rtmp y PHP.
+    if not check_runtime_binaries():
+        printc("BINARIES FAILED FIRST TEST - REINSTALLING BINARIES")
+
+        os.system("bash /tmp/install-bin-packages.sh >/dev/null 2>&1")
+        fix_runtime_paths()
+
+        if not check_runtime_binaries():
+            printc("ERROR: NGINX / NGINX_RTMP / PHP BINARIES ARE NOT WORKING")
+            raise RuntimeError("ODIN runtime binaries failed validation")
+
+    os.system("rm -rf %s/phpbuild/ >/dev/null 2>&1" % base)
+
+    printc("RUNTIME PATHS AND BINARIES OK")
+
+    os.system("%s/start_services.sh" % base)
 
 
 def modifyNginx():
+
     printc("Modifying Nginx")
     rPath = "/home/xtreamcodes/iptv_xtream_codes/nginx/conf/nginx.conf"
     rPrevData = open(rPath, "r").read()
